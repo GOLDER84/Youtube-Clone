@@ -3,7 +3,6 @@ package Controller;
 import Model.*;
 import java.util.ArrayList;
 
-
 public class AdminController {
     private Admin admin = Admin.getInstance();
     private Database database = Database.getInstance();
@@ -59,21 +58,6 @@ public class AdminController {
         );
     }
 
-//    public String checkSignupInputs(String userName, String password, String name, String email, String phoneNumber, String profileCover) {
-//        if (userName == null || userName.isEmpty()) return "Username cannot be empty";
-//        if (password == null || password.isEmpty()) return "Password cannot be empty";
-//        if (!checkPasswordStrength(password)) return "Password is too weak";
-//        if (name == null || name.isEmpty()) return "Name cannot be empty";
-//        return "Valid";
-//    }
-//
-//    public boolean checkPasswordStrength(String password) {
-//        return password.length() >= 8 &&
-//                password.matches(".*[A-Z].*") &&
-//                password.matches(".*[a-z].*") &&
-//                password.matches(".*\\d.*");
-//    }
-
     public String showPopularChannelOnSubscribers() {
         ArrayList<Channel> channels = database.getAllChannel();
         if (channels.isEmpty()) return "No channels available";
@@ -101,14 +85,14 @@ public class AdminController {
     }
 
     public String showAllContentInfo() {
-       ArrayList<Content> contents = database.getAllContent();
-       if (contents.isEmpty()) return "No content available";
+        ArrayList<Content> contents = database.getAllContent();
+        if (contents.isEmpty()) return "No content available";
 
-       StringBuilder result = new StringBuilder("All Content:\n");
-       for (Content content : contents) {
-           result.append(String.format("ID: %d, Name: %s, Likes: %d", content.getId(), content.getName(), content.getLikes()));
-       }
-       return result.toString();
+        StringBuilder result = new StringBuilder("All Content:\n");
+        for (Content content : contents) {
+            result.append(String.format("ID: %d, Name: %s, Likes: %d", content.getId(), content.getName(), content.getLikes()));
+        }
+        return result.toString();
     }
 
     public String showAllUserAccountInfo() {
@@ -122,7 +106,7 @@ public class AdminController {
         return result.toString();
     }
 
-//    public String showChannelAndContent(int channelId) {
+    //    public String showChannelAndContent(int channelId) {
 //        Channel channel = databaseController.getChannelById(channelId);
 //        if (channel == null) return "Channel not found";
 //
@@ -192,3 +176,4 @@ public class AdminController {
     }
 
 }
+
