@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="463.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.ChooseCategory">
+   <children>
+      <GridPane layoutX="4.0" layoutY="34.0" prefHeight="358.0" prefWidth="676.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="157.39999237060547" minHeight="10.0" prefHeight="157.39999237060547" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="82.9999755859375" minHeight="10.0" prefHeight="27.600018310546886" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="169.39999999999995" minHeight="10.0" prefHeight="139.6" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="44.60001220703123" minHeight="0.0" prefHeight="31.600000000000023" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="160.0" fitWidth="168.0">
+               <image>
+                  <Image url="@../../../Images/Game.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="159.0" fitWidth="168.0" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../../../Images/History.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="157.0" fitWidth="167.0" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../../../Images/Live.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="167.0" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../../../Images/Music.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="139.0" fitWidth="168.0" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../Images/news.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="142.0" fitWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../Images/Podcast.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="140.0" fitWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../Images/Society.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="138.0" fitWidth="170.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../Images/smile.jpg" />
+               </image>
+            </ImageView>
+            <CheckBox fx:id="gameChoice" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#gameClicked" prefHeight="18.0" prefWidth="156.0" text="Game" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <CheckBox fx:id="historyChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#historyClicked" prefHeight="18.0" prefWidth="150.0" text="History" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="liveChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#liveClicked" prefHeight="18.0" prefWidth="152.0" text="Live" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <CheckBox fx:id="musicChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#musicClicked" prefHeight="18.0" prefWidth="152.0" text="Music" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <CheckBox fx:id="newsChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#newsClicked" prefHeight="18.0" prefWidth="150.0" text="News" GridPane.rowIndex="3" />
+            <CheckBox fx:id="podcastChoice" alignment="CENTER" mnemonicParsing="false" onMouseDragged="#podcastClicked" prefHeight="18.0" prefWidth="146.0" text="Podcast" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <CheckBox fx:id="societyChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#societyClicked" prefHeight="18.0" prefWidth="149.0" text="Society" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Label layoutX="239.0" layoutY="6.0" text="Choose Favorite Category" textFill="#21c959">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="okBtn" layoutX="326.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#okClicked" text="OK" />
+   </children>
+</AnchorPane>
