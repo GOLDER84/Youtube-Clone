@@ -17,7 +17,8 @@
       <Label layoutX="222.0" layoutY="55.0" text="Channel Name" textFill="#3f47d9" />
       <TextField fx:id="channelNameTxt" layoutX="189.0" layoutY="83.0" />
       <TextField fx:id="channelDescriptionTxt" layoutX="76.0" layoutY="150.0" prefHeight="26.0" prefWidth="371.0" />
-      <TextField fx:id="ChannelCoverTxt" layoutX="75.0" layoutY="213.0" prefHeight="26.0" prefWidth="371.0" />
+      <TextField fx:id="ChannelCoverTxt" layoutX="75.0" layoutY="213.0" prefHeight="26.0" prefWidth="310.0" />
+      <Button layoutX="395.0" layoutY="213.0" text="Browse..." onAction="#chooseChannelCover" />
       <Label layoutX="208.0" layoutY="124.0" text="Channel Description" textFill="#3f47d9" />
       <Label layoutX="225.0" layoutY="188.0" text="Channel Cover" textFill="#3f47d9" />
       <Button fx:id="creatChannelBtn" layoutX="175.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#createChannelClicked" text="Create" />
