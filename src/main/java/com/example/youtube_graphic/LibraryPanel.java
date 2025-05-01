@@ -176,7 +176,6 @@ public class LibraryPanel implements Initializable {
 
     @FXML
     void channelCoverClicked(MouseEvent event) {
-        // پیاده کنید
     }
 
     @FXML
