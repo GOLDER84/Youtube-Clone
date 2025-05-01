@@ -10,9 +10,9 @@ public abstract class User extends Account{
     private ArrayList<Category> favoriteCategories;
     private ArrayList<Content> likedContent;
     private int likedContentsCount;
-    public User(String username, String password, String fullName, String email, String phone, String profileCover) {
+    public User(String username, String password, String fullName, String email, String phone, String profileCover , double balance) {
         super(username, password, fullName, email, phone, profileCover);
-        this.balance = 0;
+        this.balance = balance;
         this.playlists = new ArrayList<>();
         this.favoriteCategories = new ArrayList<>();
         this.likedContent = new ArrayList<>();

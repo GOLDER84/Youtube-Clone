@@ -41,9 +41,13 @@ public class DatabaseController {
         return database.getAllUser().stream().filter(u -> u.getId() == id).findFirst().orElse(null);
     }
 
+//    public Content getContentById(int id) {
+//        return database.getAllContent().stream().filter(content -> content.getId() == id).findFirst().orElse(null);
+//    }
     public Content getContentById(int id) {
-        return database.getAllContent().stream().filter(content -> content.getId() == id).findFirst().orElse(null);
+        return getContents().stream().filter(c -> c.getId() == id).findFirst().orElse(null);
     }
+
 
     public Channel getChannelById(int id) {
         return database.getAllChannel().stream().filter(channel -> channel.getChannelId() == id).findFirst().orElse(null);
@@ -89,7 +93,7 @@ public class DatabaseController {
 
     public Report getReportById(int id) {
         for (Report report : getReports()) {
-            if (report.getId() == id) {
+            if (report.getReportId() == id) {
                 return report;
             }
         }

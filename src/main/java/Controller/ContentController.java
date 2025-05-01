@@ -117,4 +117,15 @@ public class ContentController {
         channelController.addContentToChannel(shortVideo.getId());
         return "Short video created";
     }
+
+
+    public Content findContentByName(String name) {
+        for (Content content : databaseController.getContents()) {
+            if (content.getName().equalsIgnoreCase(name)) {
+                return content;
+            }
+        }
+        return null;
+    }
+
 }

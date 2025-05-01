@@ -2,6 +2,8 @@ package Controller;
 
 import Model.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminController {
     private Admin admin = Admin.getInstance();
@@ -70,6 +72,11 @@ public class AdminController {
         }
         return result.toString();
     }
+    public List<Channel> getTopChannels(int limit) {
+        List<Channel> channels = databaseController.getChannels();
+        channels.sort((c1, c2) -> Integer.compare(c2.getSubscribersList().size(), c1.getSubscribersList().size()));
+        return channels.subList(0, Math.min(limit, channels.size()));
+    }
 
     public String showPopularContentOnLikes() {
         ArrayList<Content> contents = database.getAllContent();
@@ -82,6 +89,11 @@ public class AdminController {
             result.append(i+1).append(". ").append(contents.get(i).getName()).append(" (").append(contents.get(i).getLikes()).append(" likes)\n");
         }
         return result.toString();
+    }
+    public List<Content> getTopContents(int limit) {
+        List<Content> contents = databaseController.getContents();
+        contents.sort((c1, c2) -> Integer.compare(c2.getLikes(), c1.getLikes()));
+        return contents.subList(0, Math.min(limit, contents.size()));
     }
 
     public String showAllContentInfo() {
@@ -106,30 +118,34 @@ public class AdminController {
         return result.toString();
     }
 
-    //    public String showChannelAndContent(int channelId) {
-//        Channel channel = databaseController.getChannelById(channelId);
-//        if (channel == null) return "Channel not found";
-//
-//        StringBuilder result = new StringBuilder(String.format("Channel Info:\nName: %s\nDescription: %s\nSubscribers: %d\n", channel.getChannelName(), channel.getChannelDescription(), channel.getSubscribersList().size()));
-//
-//        result.append("Contents:\n");
-//        for (int contentId : channel.getContentId()) {
-//            Content content = databaseController.getContentById(contentId);
-//            if (content != null) {
-//                result.append("- ").append(content.getName()).append("\n");
-//            }
-//        }
-//        return result.toString();
-//    }
     public String showAllReport(){
         ArrayList<Report> reports = database.getAllReport();
         if (reports.isEmpty()) return "No reports available";
+
         StringBuilder result = new StringBuilder("All reports:\n");
         for (Report report : reports) {
-            result.append(String.format("Reporter:%s\nReportedContent: %s\nUserReported: %s\nDescription: %s\n" , databaseController.getUserById(report.getReporterId()).getUsername() ,databaseController.getContentById(report.getContentId()).getName() ,databaseController.getUserById(report.getReportedUserId()).getUsername() , report.getDescription()));
+            System.out.println("Trying to load content id: " + report.getContentId());
+            User reporter = databaseController.getUserById(report.getReporterId());
+            User reportedUser = databaseController.getUserById(report.getReportedUserId());
+            Content reportedContent = databaseController.getContentById(report.getContentId());
+
+            String reporterName = (reporter != null) ? reporter.getUsername() : "Unknown Reporter (ID: " + report.getReporterId() + ")";
+            String reportedUserName = (reportedUser != null) ? reportedUser.getUsername() : "Unknown Reported User (ID: " + report.getReportedUserId() + ")";
+            String contentName = (reportedContent != null) ? reportedContent.getName() : "Content Removed (ID: " + report.getContentId() + ")";
+
+            result.append(String.format(
+                    "Reporter : %s\n" +
+                            "Reported Content : %s\n" +
+                            "Reported User : %s\n" +
+                            "Reason : %s\n" +
+                            "-------------------------\n",
+                    reporterName, contentName, reportedUserName, report.getDescription()));
         }
         return result.toString();
     }
+
+
+
     public String showAllChannelsAndContents() {
         ArrayList<Channel> channels = databaseController.getChannels();
         if (channels.isEmpty()) return "No channels available";
@@ -175,5 +191,66 @@ public class AdminController {
         return "User unbanned successfully";
     }
 
+    public int countNormalUsers() {
+        return (int) databaseController.getUsers().stream()
+                .filter(user -> user instanceof Model.NormalUser)
+                .count();
+    }
+
+    public int countPremiumUsers() {
+        return (int) databaseController.getUsers().stream()
+                .filter(user -> user instanceof Model.PremiumUser)
+                .count();
+    }
+    public List<Content> getAllContents() {
+        return databaseController.getContents();
+    }
+
+    public List<User> getAllUsers() {
+        return databaseController.getUsers();
+    }
+
+    public String getChannelDetails(String channelName) {
+        Channel channel = databaseController.getChannels().stream()
+                .filter(c -> c.getChannelName().equals(channelName))
+                .findFirst()
+                .orElse(null);
+
+        if (channel == null) {
+            return "Channel not found";
+        }
+        return String.format(
+                "Channel Name: %s\nDescription: %s\nSubscribers: %d\nPlaylists: %d\nContent: %d",
+                channel.getChannelName(),
+                channel.getChannelDescription(),
+                channel.getSubscribersList().size(),
+                channel.getPlaylists().size(),
+                channel.getContentId().size()
+        );
+    }
+
+    public String getContentDetails(String contentName) {
+        Content content = database.getAllContent().stream()
+                .filter(c -> c.getName().equals(contentName))
+                .findFirst()
+                .orElse(null);
+
+        if (content == null) {
+            return "Content not found";
+        }
+
+        return String.format(
+                "Content Name: %s\nDescription: %s\nLikes: %d\nViews: %d",
+                content.getName(),
+                content.getDescription(),
+                content.getLikes(),
+                content.getViews()
+        );
+    }
+    //00
+    public void refresh() {
+        databaseController = DatabaseController.getInstance();
+    }
+    //00
 }
 

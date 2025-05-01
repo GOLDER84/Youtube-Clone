@@ -143,5 +143,9 @@ public abstract class Content {
         return commentList;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 

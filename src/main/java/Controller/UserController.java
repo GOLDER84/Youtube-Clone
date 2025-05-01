@@ -32,7 +32,7 @@ public class UserController {
         if (database.getAllUser().stream().anyMatch(user -> user.getUsername().equals(username))) {
             return "Username already exists";
         }
-        User newUser = new NormalUser(username, password, fullName, email, phone , profileCover);
+        User newUser = new NormalUser(username, password, fullName, email, phone , profileCover , 0);
         databaseController.getUsers().add(newUser);
         lastSignedUpUser = newUser;
         return "Account created successfully";
@@ -163,14 +163,20 @@ public class UserController {
     }
 
     public String playContent(int contentId) {
-        Content content = databaseController.getContents().stream().filter(c -> c.getId() == contentId).findFirst().orElse(null);
+        Content content = databaseController.getContents().stream()
+                .filter(c -> c.getId() == contentId)
+                .findFirst()
+                .orElse(null);
+
         if (content == null) {
             return "Content does not exist";
         }
-        if (!(user instanceof PremiumUser) && content.isExclusive()) {
-            return "This content is for premium users";
-        }
+//        if (!content.isExclusive() && user instanceof NormalUser ||(content.isExclusive() && user instanceof PremiumUser) ||
+//                (content.isExclusive() && (content.getOwnerId() == user.getId()))) {
+//            return "This content is for premium users";
+//        }
         content.setViews(content.getViews() + 1);
+
         return String.format("Streaming: \nName: %s\nDescription: %s\nCategory: %s\nTime: %s" , content.getName() ,content.getDescription() , content.getCategory() , content.getDuration());
     }
 
@@ -204,19 +210,35 @@ public class UserController {
     }
 
     public String reportContent(int contentId , String reason) {
-        Content content = database.getAllContent().stream().filter(content1 -> content1.getId() == contentId).findFirst().orElse(null);
+        Content content = database.getAllContent()
+                .stream()
+                .filter(c -> c.getId() == contentId)
+                .findFirst()
+                .orElse(null);
         if (content == null) {
             return "Content does not exist";
         }
-        Report report = new Report(user.getId() , contentId , content.getOwnerId() , reason);
+        if (lastSignedUpUser.getId() == content.getOwnerId()){
+            return "You can't report this content";
+        }
+        Report report = new Report(user.getId(), contentId, content.getOwnerId(), reason);
+
         databaseController.getReports().add(report);
+        System.out.println(report.getContentId());
         return "Report submitted successfully";
     }
+
 
     public String subscribeChannel(int channelId) {
         Channel channel = databaseController.getChannelById(channelId);
         if (channel == null) {
             return "Channel does not exist";
+        }
+        if (user.getUserChannel() != null && user.getUserChannel().getChannelName().equals(channel.getChannelName())) {
+            return "You can't subscribe your own channel";
+        }
+        if (channel.getSubscribers().contains(user)){
+            return "You have already subscribed to this channel";
         }
         user.getSubscription().add(channel);
         channel.getSubscribers().add(user);
@@ -239,18 +261,27 @@ public class UserController {
         return result.toString();
     }
 
+
+
     public String showSuggestedContents() {
+        if (lastSignedUpUser == null) {
+            return "[]"; // اگه کاربر لاگین نشده
+        }
+
         ArrayList<Content> suggestedContents = databaseController.getContents().stream()
                 .filter(content ->
-                        user.getFavoriteCategories().contains(content.getCategory()) ||
-                                user.getLikedContent().contains(content) ||
-                                user.getSubscription().stream()
-                                        .anyMatch(ch -> ch.getContentId().contains(content.getId())))
+                        lastSignedUpUser.getFavoriteCategories().contains(content.getCategory()) ||
+                                lastSignedUpUser.getLikedContent().contains(content) ||
+                                lastSignedUpUser.getSubscription().stream()
+                                        .anyMatch(ch -> ch.getContentId().contains(content.getId()))
+                )
                 .sorted(Comparator.comparingInt(Content::getViews).reversed())
                 .limit(10)
                 .collect(Collectors.toCollection(ArrayList::new));
+
         return suggestedContents.toString();
     }
+
 
     public ArrayList<Channel> showSubscribedChannels() {
         if (user.getSubscription().isEmpty()) {
@@ -275,30 +306,47 @@ public class UserController {
         return result.toString();
     }
 
+
     public String addComment(int contentId , String description) {
-        Content content = database.getAllContent().get(contentId);
+        Content content = database.getAllContent()
+                .stream()
+                .filter(c -> c.getId() == contentId)
+                .findFirst()
+                .orElse(null);
         if (content == null) {
             return "Content does not exist";
         }
-        Comment newComment = new Comment(user.getId() , description , new Date());
+        Comment newComment = new Comment(user.getId(), description, new Date());
         content.getCommentList().add(newComment);
         return "Comment submitted successfully";
     }
 
+
     public String buySubscription(PremiumSubscriptionPackages requestedSubscription) {
-        if (user instanceof PremiumUser) {
-            return "You are already a premium user";
-        }
         double price = requestedSubscription.getPrice();
         if (user.getBalance() < price) {
             return "You don't have enough money";
         }
+
+        if (user instanceof PremiumUser) {
+            user.setBalance(user.getBalance() - price);
+            LocalDate expirationFirstPackage = ((PremiumUser) user).getSubscriptionEndDate();
+            LocalDate expirationSecondPackage = expirationFirstPackage.plusDays(requestedSubscription.getDays());
+            ((PremiumUser) user).setSubscriptionEndDate(expirationSecondPackage);
+            return "Your subscription has been renewed! Expiration date: " + expirationSecondPackage ;
+        }
+
         user.setBalance(user.getBalance() - price);
         LocalDate expirationDate = LocalDate.now().plusDays(requestedSubscription.getDays());
-        PremiumUser premiumUser = new PremiumUser(user.getUsername() , user.getPassword() , user.getFullName() , user.getEmail() , user.getPhone() , user.getProfileCover() , expirationDate);
+        PremiumUser premiumUser = new PremiumUser(user.getUsername() , user.getPassword() , user.getFullName() , user.getEmail() , user.getPhone() , user.getProfileCover() ,user.getBalance() ,expirationDate);
+        premiumUser.getFavoriteCategories().addAll(user.getFavoriteCategories());
+        premiumUser.setUserChannel(user.getUserChannel());
+        premiumUser.setPlaylists(user.getPlaylists());
+
         databaseController.removeUser(user);
         databaseController.addUser(premiumUser);
         this.user = premiumUser;
+        lastSignedUpUser = premiumUser;
         return String.format("Subscription purchased successfully! Expires on %s", expirationDate);
     }
 
@@ -306,7 +354,9 @@ public class UserController {
         if (user.getUserChannel() != null) {
             return "You already have a channel";
         }
-
+        if (databaseController.getChannels().stream().anyMatch(ch -> ch.getChannelName().equals(channelName))) {
+            return "There is a channel with this name";
+        }
         user.createChannel(channelName , description , cover);
         channelController.setChannel(user.getUserChannel());
         database.getAllChannel().add(user.getUserChannel());
@@ -350,6 +400,15 @@ public class UserController {
 
     public int getUserChannelId(){
         return user.getUserChannelById();
+    }
+
+    public String getCoverPathByContentName(String name) {
+        for (Content content : database.getAllContent()) {
+            if (content.getName().equals(name)) {
+                return content.getCover();
+            }
+        }
+        return "src/main/resources/Images/nothing.jpg";
     }
 }
 

@@ -55,6 +55,9 @@ public class ChannelController {
         if (content == null) {
             return "Content not found";
         }
+        if (channel.getContentId().stream().anyMatch(id -> id.equals(content.getId()))) {
+            return "Content already exists";
+        }
         channel.getContentId().add(contentId);
         channel.getPlaylistById(channel.getAllContentPlaylistId()).getContentList().add(content);
         return "Content added successfully";
