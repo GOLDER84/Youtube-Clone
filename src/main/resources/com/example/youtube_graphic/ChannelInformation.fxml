@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<ScrollPane fitToWidth="true" prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.youtube_graphic.ChannelInformationPanel">
+    <AnchorPane prefHeight="800" prefWidth="800" style="-fx-background-color: #ffffff;">
+
+        <!-- دکمه برگشت -->
+        <Button layoutX="20" layoutY="20" onAction="#onBackClicked" text="Back" />
+
+        <!-- عنوان صفحه -->
+        <Label layoutX="300" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Channel Information" />
+
+        <!-- کاور کانال -->
+        <ImageView fx:id="channelCoverImage" fitHeight="120" fitWidth="200" layoutX="20" layoutY="70" preserveRatio="true" />
+
+        <!-- اطلاعات اصلی کانال -->
+        <Label layoutX="250" layoutY="80" text="Name:" />
+        <Label fx:id="channelNameLabel" layoutX="350" layoutY="80" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="250" layoutY="120" text="Description:" />
+        <TextArea fx:id="channelDescriptionArea" editable="false" layoutX="350" layoutY="120" prefHeight="80" prefWidth="400" wrapText="true" />
+
+        <Label layoutX="250" layoutY="220" text="Followers:" />
+        <Label fx:id="followersCountLabel" layoutX="350" layoutY="220" style="-fx-font-weight: bold;" />
+
+        <!-- دکمه Follow -->
+        <Button fx:id="followButton" layoutX="600" layoutY="80" onAction="#onFollowClicked" text="Follow" />
+
+        <!-- لیست پلی‌لیست‌ها -->
+        <Label layoutX="20" layoutY="270" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Playlists:" />
+        <ListView fx:id="playlistListView" layoutX="20" layoutY="300" onMouseClicked="#onPlaylistSelected" prefHeight="400" prefWidth="350" />
+
+        <!-- لیست محتواها -->
+        <Label layoutX="400" layoutY="270" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Contents:" />
+      <ScrollPane layoutX="392.0" layoutY="300.0" prefHeight="300.0" prefWidth="350.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <FlowPane fx:id="showContentFlowPane" layoutX="8.0" prefHeight="290.0" prefWidth="340.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+
+
+    </AnchorPane>
+</ScrollPane>
