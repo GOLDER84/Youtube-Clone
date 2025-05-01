@@ -20,11 +20,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChooseCategory {
+    private Stage stage;
     private final ArrayList<String> selectedCategories = new ArrayList<>();
 
     private void handleCategorySelection(CheckBox checkBox, String categoryName) {
         if (checkBox.isSelected()) {
-            if (selectedCategories.size() < 3) {
+            if (selectedCategories.size() < 4) {
                 selectedCategories.add(categoryName);
             } else {
                 checkBox.setSelected(false);
@@ -98,7 +99,7 @@ public class ChooseCategory {
         handleCategorySelection(societyChoice, "SOCIETY");
     }
     @FXML
-    void okClicked(MouseEvent event) {
+    void okClicked(MouseEvent event) throws IOException {
         if (selectedCategories.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No Selection");
@@ -107,7 +108,6 @@ public class ChooseCategory {
             alert.showAndWait();
             return;
         }
-
         ArrayList<Category> chosenCategories = new ArrayList<>();
         for (String name : selectedCategories) {
             try {
@@ -127,7 +127,12 @@ public class ChooseCategory {
         alert.setContentText(result);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
-
+            this.stage = HelloApplication.primaryStage;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
