@@ -38,14 +38,12 @@ public class UserChannelPanel implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // گرفتن کانال کاربر
         channel = userController.lastSignedUpUser.getUserChannel();
         if (channel == null) {
             new Alert(Alert.AlertType.WARNING, "You do not have a channel yet!").showAndWait();
             return;
         }
 
-        // مقداردهی اولیه‌ی فیلدها
         channelName.setText(channel.getChannelName());
         channelDescription.setText(channel.getChannelDescription());
         subscriberCount.setText(String.valueOf(channel.getSubscribersList().size()));
@@ -55,7 +53,6 @@ public class UserChannelPanel implements Initializable {
             channelCover.setImage(new Image(coverFile.toURI().toString()));
         }
 
-        // نمایش لیست پلی‌لیست‌ها (فقط آن‌ها که در channel.getPlaylists() هستند)
         playlistListView.getItems().clear();
         for (Playlist pl : channel.getPlaylists()) {
             playlistListView.getItems().add(pl.getPlaylistName());
@@ -91,7 +88,6 @@ public class UserChannelPanel implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PlaylistContent.fxml"));
             Parent root = loader.load();
 
-            // به کنترلر بعدی نام پلی‌لیست را می‌دهیم
             PlaylistContentPanel ctrl = loader.getController();
             ctrl.loadPlaylist(selected);
 
@@ -105,7 +101,6 @@ public class UserChannelPanel implements Initializable {
     @FXML
     private void onPublishContent() {
         try {
-            // لود کردن صفحه انتشار محتوا
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PublishContent.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
