@@ -72,7 +72,7 @@
             <CheckBox fx:id="liveChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#liveClicked" prefHeight="18.0" prefWidth="152.0" text="Live" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <CheckBox fx:id="musicChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#musicClicked" prefHeight="18.0" prefWidth="152.0" text="Music" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <CheckBox fx:id="newsChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#newsClicked" prefHeight="18.0" prefWidth="150.0" text="News" GridPane.rowIndex="3" />
-            <CheckBox fx:id="podcastChoice" alignment="CENTER" mnemonicParsing="false" onMouseDragged="#podcastClicked" prefHeight="18.0" prefWidth="146.0" text="Podcast" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <CheckBox fx:id="podcastChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#podcastClicked" prefHeight="18.0" prefWidth="146.0" text="Podcast" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <CheckBox fx:id="societyChoice" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#societyClicked" prefHeight="18.0" prefWidth="149.0" text="Society" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
