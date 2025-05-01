@@ -22,6 +22,7 @@ public class PremiumPackagesPanel {
     UserController userController = UserController.getInstance();
     DatabaseController databaseController = DatabaseController.getInstance();
     private Stage stage;
+
     private void handlePackageSelection(CheckBox checkBox , String premiumPackage) {
         if (checkBox.isSelected()) {
             if (packageName.isEmpty()){
