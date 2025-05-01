@@ -36,9 +36,23 @@ public class CreateChannelPanel {
     private Label createChannelMassage;
 
     @FXML
+    private void chooseChannelCover() {
+        javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        fileChooser.setTitle("Choose Channel Cover Image");
+        fileChooser.getExtensionFilters().addAll(
+                new javafx.stage.FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        java.io.File selectedFile = fileChooser.showOpenDialog(HelloApplication.primaryStage);
+        if (selectedFile != null) {
+            ChannelCoverTxt.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+    @FXML
     void backClicked(MouseEvent event) throws IOException {
         this.stage = HelloApplication.primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Library.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
