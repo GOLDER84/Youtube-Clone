@@ -11,57 +11,73 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.ContentPlayerPanel">
-
+<AnchorPane prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.youtube_graphic.ContentPlayerPanel"
+            style="-fx-background-color: #1e1e1e;">
     <children>
 
         <!-- دکمه برگشت -->
-        <Button fx:id="backBtn" layoutX="20.0" layoutY="20.0" onAction="#backClicked" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8px;" text="← Back" />
+        <Button fx:id="backBtn" layoutX="20.0" layoutY="20.0"
+                onAction="#backClicked"
+                text="← Back"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 8px;" />
 
         <!-- MediaView برای پخش ویدیو -->
         <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="600.0" layoutX="30.0" layoutY="70.0" />
 
         <!-- اطلاعات ویدیو -->
         <VBox layoutX="650.0" layoutY="70.0" spacing="8.0">
-            <Label fx:id="videoNameLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-            <Label fx:id="descriptionLabel" style="-fx-font-size: 14px;" wrapText="true" />
-            <Label fx:id="durationLabel" style="-fx-font-size: 14px;" />
-            <Label fx:id="categoryLabel" style="-fx-font-size: 14px;" />
-            <Label fx:id="viewsLabel" style="-fx-font-size: 14px;" />
-            <Label fx:id="likesLabel" style="-fx-font-size: 14px;" />
+            <Label fx:id="videoNameLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label fx:id="descriptionLabel" style="-fx-font-size: 14px; -fx-text-fill: lightgray;" wrapText="true" />
+            <Label fx:id="durationLabel" style="-fx-font-size: 14px; -fx-text-fill: lightgray;" />
+            <Label fx:id="categoryLabel" style="-fx-font-size: 14px; -fx-text-fill: lightgray;" />
+            <Label fx:id="viewsLabel" style="-fx-font-size: 14px; -fx-text-fill: lightgray;" />
+            <Label fx:id="likesLabel" style="-fx-font-size: 14px; -fx-text-fill: lightgray;" />
         </VBox>
 
-        <!-- کنترل های پخش -->
+        <!-- کنترل‌های پخش -->
         <HBox layoutX="30.0" layoutY="450.0" spacing="15.0">
-            <Button fx:id="playBtn" onMouseClicked="#playClicked" text="▶ Play" />
-            <Button fx:id="pauseBtn" onMouseClicked="#pauseClicked" text="⏸ Pause" />
-            <Button fx:id="stopBtn" onMouseClicked="#stopClicked" text="⏹ Stop" />
+            <Button fx:id="playBtn" onMouseClicked="#playClicked" text="Play"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+            <Button fx:id="pauseBtn" onMouseClicked="#pauseClicked" text="Pause"
+                    style="-fx-background-color: #f39c12; -fx-text-fill: white;" />
+            <Button fx:id="stopBtn" onMouseClicked="#stopClicked" text="Stop"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
             <Slider fx:id="audioSlider" prefWidth="120.0" />
         </HBox>
 
         <!-- پروگرس بار و زمان -->
         <Slider fx:id="videoSlider" layoutX="30.0" layoutY="500.0" prefWidth="600.0" />
-        <Label fx:id="timeLabel" layoutX="640.0" layoutY="500.0" text="00:00 / 00:00" />
+        <Label fx:id="timeLabel" layoutX="640.0" layoutY="500.0" text="00:00 / 00:00"
+               style="-fx-text-fill: white;" />
 
         <!-- لایک و ریپورت -->
         <HBox layoutX="30.0" layoutY="550.0" spacing="20.0">
-            <Button fx:id="likeBtn" onAction="#likeClicked" text="❤️ Like" />
-            <Button fx:id="reportBtn" onAction="#reportClicked" text="🚩 Report" />
+            <Button fx:id="likeBtn" onAction="#likeClicked" text="Like"
+                    style="-fx-background-color: #e84393; -fx-text-fill: white;" />
+            <Button fx:id="reportBtn" onAction="#reportClicked" text="Report"
+                    style="-fx-background-color: #c0392b; -fx-text-fill: white;" />
         </HBox>
 
         <!-- نوشتن کامنت -->
         <VBox layoutX="30.0" layoutY="600.0" spacing="8.0">
-            <TextArea fx:id="commentTextArea" prefHeight="50.0" prefWidth="400.0" promptText="Write a comment..." />
-            <Button fx:id="commentBtn" onAction="#commentClicked" text="Add Comment" />
+            <TextArea fx:id="commentTextArea" prefHeight="50.0" prefWidth="400.0"
+                      promptText="Write a comment..."
+                      style="-fx-control-inner-background: #2c3e50; -fx-text-fill: white;" />
+            <Button fx:id="commentBtn" onAction="#commentClicked" text="Add Comment"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white;" />
         </VBox>
 
-        <!-- لیست کامنت ها -->
-        <ListView fx:id="commentListView" layoutX="715.0" layoutY="317.0" prefHeight="363.0" prefWidth="255.0" />
+        <!-- لیست کامنت‌ها -->
+        <ListView fx:id="commentListView" layoutX="715.0" layoutY="317.0"
+                  prefHeight="363.0" prefWidth="255.0" />
 
         <!-- نمایش چنل (عکس + اسم) -->
         <HBox layoutX="650.0" layoutY="250.0" spacing="10.0">
             <ImageView fx:id="channelImageView" fitHeight="50.0" fitWidth="50.0" />
-         <Label fx:id="channelNameLabel" />
+            <Label fx:id="channelNameLabel" style="-fx-text-fill: white;" />
         </HBox>
 
     </children>

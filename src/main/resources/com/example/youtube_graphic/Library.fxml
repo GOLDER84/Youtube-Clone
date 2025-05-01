@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="633.0" prefWidth="900.0"
-            style="-fx-background-color: #ccc7c7;"
+            style="-fx-background-color: #121212;"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.youtube_graphic.LibraryPanel">
@@ -20,57 +20,65 @@
          <ImageView fx:id="profileCover"
                     fitHeight="150.0" fitWidth="154.0"
                     layoutX="166.0" pickOnBounds="true" preserveRatio="true"/>
-         <Label layoutX="10.0" layoutY="205.0" text="Username :" textFill="#29c46a"/>
-         <Label fx:id="username" layoutX="90.0" layoutY="205.0"/>
+         <Label layoutX="10.0" layoutY="205.0" text="👤 Username :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="username" layoutX="110.0" layoutY="205.0" style="-fx-text-fill: #ffffff;" />
 
-         <Label layoutX="10.0" layoutY="266.0" text="Fullname :" textFill="#29c46a"/>
-         <Label fx:id="fullName" layoutX="90.0" layoutY="266.0"/>
+         <Label layoutX="10.0" layoutY="266.0" text="📝 Fullname :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="fullName" layoutX="110.0" layoutY="266.0" style="-fx-text-fill: #ffffff;" />
 
-         <Label layoutX="10.0" layoutY="324.0" text="Email :" textFill="#29c46a"/>
-         <Label fx:id="email" layoutX="90.0" layoutY="324.0"/>
+         <Label layoutX="10.0" layoutY="324.0" text="📧 Email :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="email" layoutX="90.0" layoutY="324.0" style="-fx-text-fill: #ffffff;" />
 
-         <Label layoutX="10.0" layoutY="349.0" text="PhoneNumber :" textFill="#29c46a"/>
-         <Label fx:id="phoneNumber" layoutX="110.0" layoutY="349.0"/>
+         <Label layoutX="10.0" layoutY="349.0" text="📱 PhoneNumber :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="phoneNumber" layoutX="140.0" layoutY="349.0" style="-fx-text-fill: #ffffff;" />
 
-         <Label layoutX="10.0" layoutY="375.0" text="Credit :" textFill="#29c46a"/>
-         <Label fx:id="balance" layoutX="90.0" layoutY="375.0"/>
+         <Label layoutX="10.0" layoutY="375.0" text="💰 Credit :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="balance" layoutX="90.0" layoutY="375.0" style="-fx-text-fill: #ffffff;" />
 
          <!-- Edit buttons -->
          <Button fx:id="changePasswordBtn" layoutX="9.0" layoutY="226.0"
-                 onMouseClicked="#changePasswordClicked" text="Change Password"/>
+                 onMouseClicked="#changePasswordClicked" text="🔑 Change Password"
+                 style="-fx-background-color: #333333; -fx-text-fill: #ffffff;" />
          <Button fx:id="changeFullnameBtn" layoutX="10.0" layoutY="292.0"
-                 onMouseClicked="#changeFullnameClicked" text="Change Fullname"/>
+                 onMouseClicked="#changeFullnameClicked" text="🧑‍💼 Change Fullname"
+                 style="-fx-background-color: #333333; -fx-text-fill: #ffffff;" />
 
          <!-- Subscription -->
-         <Label layoutX="10.0" layoutY="434.0" text="Subscription Type :" textFill="#29c46a"/>
-         <Label fx:id="subscriptionType" layoutX="140.0" layoutY="434.0"/>
+         <Label layoutX="10.0" layoutY="434.0" text="🎫 Subscription Type :" style="-fx-text-fill: #29c46a;" />
+         <Label fx:id="subscriptionType" layoutX="170.0" layoutY="434.0" style="-fx-text-fill: #ffffff;" />
          <Button fx:id="getPremiumBtn" layoutX="10.0" layoutY="459.0"
-                 onMouseClicked="#getPremiumClicked" text="Get Premium"/>
+                 onMouseClicked="#getPremiumClicked" text="⭐ Get Premium"
+                 style="-fx-background-color: #444444; -fx-text-fill: #ffffff;" />
 
          <!-- Increase credits -->
          <Button fx:id="inccreaseCreditBtn" layoutX="10.0" layoutY="396.0"
-                 onMouseClicked="#increaseCreditClicked" text="Increase Credit"/>
+                 onMouseClicked="#increaseCreditClicked" text="➕ Increase Credit"
+                 style="-fx-background-color: #444444; -fx-text-fill: #ffffff;" />
 
          <!-- Channel info -->
-         <Label layoutX="380.0" layoutY="180.0" text="Your Channel" textFill="#29c46a"/>
+         <Label layoutX="380.0" layoutY="180.0" text="📺 Your Channel" style="-fx-text-fill: #29c46a;" />
          <ImageView fx:id="channelCover" fitHeight="67.0" fitWidth="95.0"
                     layoutX="380.0" layoutY="210.0" onMouseClicked="#channelCoverClicked"
                     pickOnBounds="true" preserveRatio="true"/>
          <Button fx:id="createChannelBtn" layoutX="380.0" layoutY="304.0"
-                 onMouseClicked="#createChannelClicked" text="Create Channel"/>
+                 onMouseClicked="#createChannelClicked" text="➕ Create Channel"
+                 style="-fx-background-color: #333333; -fx-text-fill: #ffffff;" />
 
          <!-- Playlists -->
-         <Label layoutX="380.0" layoutY="366.0" text="Your Playlists" textFill="#29c46a"/>
+         <Label layoutX="380.0" layoutY="366.0" text="🎵 Your Playlists" style="-fx-text-fill: #29c46a;" />
          <Button fx:id="createPlaylistBtn" layoutX="380.0" layoutY="390.0"
-                 onMouseClicked="#createPlaylistClicked" text="Create Playlist"/>
+                 onMouseClicked="#createPlaylistClicked" text="➕ Create Playlist"
+                 style="-fx-background-color: #333333; -fx-text-fill: #ffffff;" />
          <ListView fx:id="playlistListView"
                    layoutX="380.0" layoutY="430.0"
                    prefWidth="250.0" prefHeight="150.0"
-                   onMouseClicked="#playlistSelected"/>
+                   onMouseClicked="#playlistSelected"
+                   style="-fx-background-color: #1e1e1e; -fx-control-inner-background: #1e1e1e; -fx-text-fill: #ffffff;" />
 
          <!-- Logout -->
          <Button fx:id="logoutBtn" layoutX="250.0" layoutY="500.0"
-                 onMouseClicked="#logoutClicked" text="Logout"/>
+                 onMouseClicked="#logoutClicked" text="🚪 Logout"
+                 style="-fx-background-color: #880000; -fx-text-fill: #ffffff;" />
 
       </Group>
    </children>

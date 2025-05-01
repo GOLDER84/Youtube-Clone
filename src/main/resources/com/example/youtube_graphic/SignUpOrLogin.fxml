@@ -8,18 +8,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.SignUpOrLoginPanel">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.SignUpOrLoginPanel">
    <children>
       <ImageView fx:id="yuimage" fitHeight="150.0" fitWidth="157.0" layoutX="233.0" layoutY="14.0" onMouseEntered="#dragDetected" onMouseExited="#dragDetected2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Images/youtube-logo.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="enterUsername" layoutX="233.0" layoutY="200.0" promptText="username" />
-      <Button fx:id="loginBtn" layoutX="285.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#loginClicked" text="Login" />
-      <Label fx:id="SignupBtn" alignment="CENTER" layoutX="269.0" layoutY="337.0" onMouseClicked="#signupClicked" prefHeight="18.0" prefWidth="70.0" text="Signup" textFill="#271fb4" />
-      <PasswordField fx:id="enterPassword" layoutX="233.0" layoutY="239.0" promptText="password" />
-      <Label fx:id="loginMassage" alignment="CENTER" layoutX="183.0" layoutY="275.0" prefHeight="18.0" prefWidth="242.0" textFill="#d70b0b" />
+
+      <TextField fx:id="enterUsername" layoutX="233.0" layoutY="200.0" promptText="👤 Username" style="-fx-background-color: #1e1e1e; -fx-text-fill: white; -fx-prompt-text-fill: #888888;" />
+
+      <PasswordField fx:id="enterPassword" layoutX="233.0" layoutY="239.0" promptText="🔒 Password" style="-fx-background-color: #1e1e1e; -fx-text-fill: white; -fx-prompt-text-fill: #888888;" />
+
+      <Button fx:id="loginBtn" layoutX="276.0" layoutY="302.0" onMouseClicked="#loginClicked" style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-font-weight: bold;" text="🔓 Login" />
+
+      <Label fx:id="SignupBtn" alignment="CENTER" layoutX="269.0" layoutY="337.0" onMouseClicked="#signupClicked" prefHeight="18.0" prefWidth="70.0" style="-fx-cursor: hand;" text="➕ Signup" textFill="#42a5f5" />
+
+      <Label fx:id="loginMassage" alignment="CENTER" layoutX="183.0" layoutY="275.0" prefHeight="18.0" prefWidth="242.0" textFill="#ff5252" />
    </children>
 </AnchorPane>

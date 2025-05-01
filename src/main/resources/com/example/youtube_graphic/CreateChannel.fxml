@@ -6,23 +6,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="349.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.CreateChannelPanel">
+<AnchorPane prefHeight="349.0" prefWidth="525.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.youtube_graphic.CreateChannelPanel"
+            style="-fx-background-color: #1e1e1e;">
    <children>
-      <Label layoutX="200.0" layoutY="14.0" prefHeight="27.0" prefWidth="128.0" text="Create Channel" textFill="#29c46a">
+
+      <Label layoutX="200.0" layoutY="14.0" prefHeight="27.0" prefWidth="128.0"
+             text="Create Channel" textFill="#29c46a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="222.0" layoutY="55.0" text="Channel Name" textFill="#3f47d9" />
-      <TextField fx:id="channelNameTxt" layoutX="189.0" layoutY="83.0" />
-      <TextField fx:id="channelDescriptionTxt" layoutX="76.0" layoutY="150.0" prefHeight="26.0" prefWidth="371.0" />
-      <TextField fx:id="ChannelCoverTxt" layoutX="75.0" layoutY="213.0" prefHeight="26.0" prefWidth="310.0" />
-      <Button layoutX="395.0" layoutY="213.0" text="Browse..." onAction="#chooseChannelCover" />
-      <Label layoutX="208.0" layoutY="124.0" text="Channel Description" textFill="#3f47d9" />
-      <Label layoutX="225.0" layoutY="188.0" text="Channel Cover" textFill="#3f47d9" />
-      <Button fx:id="creatChannelBtn" layoutX="175.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#createChannelClicked" text="Create" />
-      <Button fx:id="backBtn" layoutX="295.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#backClicked" text="Back" />
-      <Label fx:id="createChannelMassage" alignment="CENTER" layoutX="129.0" layoutY="251.0" prefHeight="18.0" prefWidth="263.0" textAlignment="CENTER" textFill="#df1717" />
+
+      <Label layoutX="222.0" layoutY="55.0" text="Channel Name" textFill="#3498db" />
+      <TextField fx:id="channelNameTxt" layoutX="189.0" layoutY="83.0"
+                 style="-fx-control-inner-background: #2c3e50; -fx-text-fill: white;" />
+
+      <Label layoutX="208.0" layoutY="124.0" text="Channel Description" textFill="#3498db" />
+      <TextField fx:id="channelDescriptionTxt" layoutX="76.0" layoutY="150.0"
+                 prefHeight="26.0" prefWidth="371.0"
+                 style="-fx-control-inner-background: #2c3e50; -fx-text-fill: white;" />
+
+      <Label layoutX="225.0" layoutY="188.0" text="Channel Cover" textFill="#3498db" />
+      <TextField fx:id="ChannelCoverTxt" layoutX="75.0" layoutY="213.0"
+                 prefHeight="26.0" prefWidth="310.0"
+                 style="-fx-control-inner-background: #2c3e50; -fx-text-fill: white;" />
+      <Button layoutX="395.0" layoutY="213.0" text="Browse..." onAction="#chooseChannelCover"
+              style="-fx-background-color: #2980b9; -fx-text-fill: white;" />
+
+      <Button fx:id="creatChannelBtn" layoutX="175.0" layoutY="286.0"
+              onMouseClicked="#createChannelClicked" text="Create"
+              style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+
+      <Button fx:id="backBtn" layoutX="295.0" layoutY="286.0"
+              onMouseClicked="#backClicked" text="Back"
+              style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+
+      <Label fx:id="createChannelMassage" alignment="CENTER" layoutX="129.0" layoutY="251.0"
+             prefHeight="18.0" prefWidth="263.0" textAlignment="CENTER" textFill="#e74c3c" />
+
    </children>
 </AnchorPane>

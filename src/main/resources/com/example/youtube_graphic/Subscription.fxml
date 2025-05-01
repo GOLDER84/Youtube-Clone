@@ -3,10 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.youtube_graphic.SubscriptionsPanel" prefWidth="800" prefHeight="600" style="-fx-background-color: #ffffff;">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.youtube_graphic.SubscriptionsPanel"
+            prefWidth="800" prefHeight="600" style="-fx-background-color: #121212;">
 
-    <Label layoutX="30" layoutY="30" text="Subscriptions" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <Label layoutX="30" layoutY="30" text="📺 Subscriptions"
+           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
 
-    <ListView fx:id="subscriptionsListView" layoutX="30" layoutY="80" prefWidth="740" prefHeight="480" onMouseClicked="#onChannelSelected"/>
+    <ListView fx:id="subscriptionsListView" layoutX="30" layoutY="80" prefWidth="740" prefHeight="480"
+              onMouseClicked="#onChannelSelected"
+              style="-fx-background-color: #1e1e1e; -fx-control-inner-background: #1e1e1e; -fx-text-fill: white;" />
 
 </AnchorPane>

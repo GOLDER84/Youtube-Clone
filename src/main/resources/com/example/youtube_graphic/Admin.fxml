@@ -9,41 +9,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="671.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.AdminPanel">
+<AnchorPane prefHeight="671.0" prefWidth="880.0" style="-fx-background-color: #181818;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.AdminPanel">
 
     <!-- Header -->
-    <Label layoutX="300.0" layoutY="20.0" text="Admin Panel">
+    <Label layoutX="300.0" layoutY="20.0" text="Admin Panel" textFill="white">
         <font>
             <Font name="Arial Bold" size="28.0" />
         </font>
     </Label>
 
     <!-- Buttons -->
-    <Button fx:id="adminInfoBtn" layoutX="50.0" layoutY="100.0" onMouseClicked="#adminInfoClicked" text="Show Admin Info" />
-    <Button fx:id="popularChannelsBtn" layoutX="50.0" layoutY="150.0" onMouseClicked="#popularChannelsClicked" text="Show Popular Channels" />
-    <Button fx:id="popularContentsBtn" layoutX="50.0" layoutY="200.0" onMouseClicked="#popularContentsClicked" text="Show Popular Contents" />
-    <Button fx:id="allContentsBtn" layoutX="50.0" layoutY="250.0" onMouseClicked="#allContentsClicked" text="Show All Contents" />
-    <Button fx:id="allUsersBtn" layoutX="50.0" layoutY="300.0" onMouseClicked="#allUsersClicked" text="Show All Users" />
-    <Button fx:id="allReportsBtn" layoutX="50.0" layoutY="350.0" onMouseClicked="#allReportsClicked" text="Show All Reports" />
-    <Button fx:id="manageReportsBtn" layoutX="50.0" layoutY="400.0" onMouseClicked="#manageReportsClicked" text="Manage Reports" />
-    <Button fx:id="acceptReportBtn" layoutX="50.0" layoutY="450.0" onMouseClicked="#acceptReportBtn" text="Accept Report" />
-    <Button fx:id="unbanUserBtn" layoutX="50.0" layoutY="500.0" onMouseClicked="#unbanUserClicked" text="Unban User" />
-    <Button fx:id="logoutBtn" layoutX="50.0" layoutY="550.0" onMouseClicked="#logoutClicked" text="Logout" />
+    <Button fx:id="adminInfoBtn" layoutX="50.0" layoutY="100.0" onMouseClicked="#adminInfoClicked" text="👤 Show Admin Info" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="popularChannelsBtn" layoutX="50.0" layoutY="150.0" onMouseClicked="#popularChannelsClicked" text="🔥 Popular Channels" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="popularContentsBtn" layoutX="50.0" layoutY="200.0" onMouseClicked="#popularContentsClicked" text="📈 Popular Contents" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="allContentsBtn" layoutX="50.0" layoutY="250.0" onMouseClicked="#allContentsClicked" text="🎬 All Contents" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="allUsersBtn" layoutX="50.0" layoutY="300.0" onMouseClicked="#allUsersClicked" text="👥 All Users" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="allReportsBtn" layoutX="50.0" layoutY="350.0" onMouseClicked="#allReportsClicked" text="🚨 All Reports" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="manageReportsBtn" layoutX="50.0" layoutY="400.0" onMouseClicked="#manageReportsClicked" text="📄 Manage Reports" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="acceptReportBtn" layoutX="50.0" layoutY="450.0" onMouseClicked="#acceptReportBtn" text="✅ Accept Report" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="unbanUserBtn" layoutX="50.0" layoutY="500.0" onMouseClicked="#unbanUserClicked" text="🔓 Unban User" style="-fx-background-color: #383838; -fx-text-fill: white;" />
+    <Button fx:id="logoutBtn" layoutX="50.0" layoutY="550.0" onMouseClicked="#logoutClicked" text="🚪 Logout" style="-fx-background-color: #c62828; -fx-text-fill: white;" />
 
     <!-- Output Label -->
-    <Label fx:id="outputLabel" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="550.0" wrapText="true" />
+    <Label fx:id="outputLabel" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="550.0" wrapText="true" textFill="white" />
 
     <!-- User List -->
-    <Label layoutX="650.0" layoutY="27.0" text="Users List:" />
-    <ListView fx:id="userListView" layoutX="650.0" layoutY="50.0" onMouseClicked="#userSelected" prefHeight="200.0" prefWidth="200.0" />
+    <Label layoutX="650.0" layoutY="27.0" text="Users List:" textFill="white" />
+    <ListView fx:id="userListView" layoutX="650.0" layoutY="50.0" onMouseClicked="#userSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030; -fx-control-inner-background: #303030; -fx-text-fill: white;" />
 
     <!-- Content List -->
-    <Label layoutX="650.0" layoutY="254.0" text="Content List:" />
-    <ListView fx:id="contentListView" layoutX="650.0" layoutY="276.0" onMouseClicked="#contentSelected" prefHeight="200.0" prefWidth="200.0" />
+    <Label layoutX="650.0" layoutY="254.0" text="Content List:" textFill="white" />
+    <ListView fx:id="contentListView" layoutX="650.0" layoutY="276.0" onMouseClicked="#contentSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #303030; -fx-control-inner-background: #303030; -fx-text-fill: white;" />
 
-    <!-- BarChart for Popular Channels & Contents -->
-    <Label layoutX="174.0" layoutY="441.0" text="Statistics: Popular Channels And Contents" />
-    <BarChart fx:id="barChart" layoutX="156.0" layoutY="463.0" prefHeight="200.0" prefWidth="550.0">
+    <!-- BarChart -->
+    <Label layoutX="174.0" layoutY="441.0" text="📊 Statistics: Popular Channels And Contents" textFill="white" />
+    <BarChart fx:id="barChart" layoutX="156.0" layoutY="463.0" prefHeight="200.0" prefWidth="550.0" style="-fx-background-color: #181818;">
         <xAxis>
             <CategoryAxis />
         </xAxis>

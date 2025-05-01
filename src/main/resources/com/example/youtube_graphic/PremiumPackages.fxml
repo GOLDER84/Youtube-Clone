@@ -11,46 +11,70 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #121212;"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.youtube_graphic.PremiumPackagesPanel">
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.PremiumPackagesPanel">
-   <children>
-      <GridPane layoutX="61.0" layoutY="78.0" prefHeight="214.0" prefWidth="474.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="205.60002746582032" minHeight="10.0" prefHeight="191.99998779296874" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="113.59998168945313" minHeight="10.0" prefHeight="37.600012207031256" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fitHeight="184.0" fitWidth="157.0" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../../../Images/silver.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="184.0" fitWidth="158.0" GridPane.columnIndex="2">
-               <image>
-                  <Image url="@../../../Images/gold.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="184.0" fitWidth="157.0">
-               <image>
-                  <Image url="@../../../Images/bronze.jpg" />
-               </image>
-            </ImageView>
-            <CheckBox fx:id="bronzeBtn" mnemonicParsing="false" onMouseClicked="#bronzeClicked" text="Bronze" GridPane.rowIndex="1" />
-            <CheckBox fx:id="silverBtn" mnemonicParsing="false" onMouseClicked="#silverClicked" text="Silver" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox fx:id="goldBtn" mnemonicParsing="false" onMouseClicked="#goldClicked" text="Gold" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <Label layoutX="172.0" layoutY="25.0" text="Premium Subscription Packages" textFill="#29c46a">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="buyBtn" layoutX="231.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#buyClicked" text="Buy" />
-      <Button fx:id="backBtn" layoutX="329.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#backClicked" text="Back" />
-   </children>
+    <children>
+        <!-- Title -->
+        <Label layoutX="130.0" layoutY="25.0"
+               text="💎 Premium Subscription Packages"
+               textFill="#29c46a"
+               style="-fx-font-size: 20px;"/>
+
+        <!-- Package Grid -->
+        <GridPane layoutX="61.0" layoutY="78.0" prefHeight="214.0" prefWidth="474.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="192.0" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="40.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+
+            <children>
+                <ImageView fitHeight="184.0" fitWidth="157.0" GridPane.columnIndex="0">
+                    <image>
+                        <Image url="@../../../Images/bronze.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="184.0" fitWidth="157.0" GridPane.columnIndex="1">
+                    <image>
+                        <Image url="@../../../Images/silver.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="184.0" fitWidth="157.0" GridPane.columnIndex="2">
+                    <image>
+                        <Image url="@../../../Images/gold.jpg" />
+                    </image>
+                </ImageView>
+
+                <!-- Package Checkboxes -->
+                <CheckBox fx:id="bronzeBtn" text="🥉 Bronze"
+                          style="-fx-text-fill: white;"
+                          onMouseClicked="#bronzeClicked" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                <CheckBox fx:id="silverBtn" text="🥈 Silver"
+                          style="-fx-text-fill: white;"
+                          onMouseClicked="#silverClicked" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <CheckBox fx:id="goldBtn" text="🥇 Gold"
+                          style="-fx-text-fill: white;"
+                          onMouseClicked="#goldClicked" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+
+        <!-- Buttons -->
+        <Button fx:id="buyBtn" layoutX="231.0" layoutY="331.0" text="🛒 Buy"
+                style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"
+                onMouseClicked="#buyClicked"/>
+
+        <Button fx:id="backBtn" layoutX="329.0" layoutY="331.0" text="🔙 Back"
+                style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5;"
+                onMouseClicked="#backClicked"/>
+    </children>
 </AnchorPane>

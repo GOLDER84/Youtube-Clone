@@ -5,35 +5,44 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
-
 <?import javafx.scene.control.ScrollPane?>
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.youtube_graphic.HomePanel">
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.youtube_graphic.HomePanel"
+            style="-fx-background-color: #121212;">
 
     <children>
 
         <!-- Suggested Contents Label -->
-        <Label layoutX="50.0" layoutY="20.0" text="Suggested Contents:" style="-fx-font-size: 20px;"/>
+        <Label layoutX="50.0" layoutY="20.0" text="Suggested Contents:"
+               style="-fx-font-size: 20px; -fx-text-fill: #ffffff;" />
 
         <!-- ScrollPane برای Suggested -->
-        <ScrollPane layoutX="50.0" layoutY="50.0" prefWidth="700.0" prefHeight="200.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
+        <ScrollPane layoutX="50.0" layoutY="50.0" prefWidth="700.0" prefHeight="200.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: #121212; -fx-border-color: transparent;">
             <content>
-                <FlowPane fx:id="suggestedFlowPane" prefWidth="680.0" prefHeight="180.0" hgap="10" vgap="10" />
+                <FlowPane fx:id="suggestedFlowPane" prefWidth="680.0" prefHeight="180.0" hgap="10" vgap="10"
+                          style="-fx-background-color: #1e1e1e;" />
             </content>
         </ScrollPane>
 
         <!-- Search Field -->
-        <TextField fx:id="searchField" layoutX="50.0" layoutY="280.0" promptText="Search content or channel..." prefWidth="500.0"/>
+        <TextField fx:id="searchField" layoutX="50.0" layoutY="280.0" promptText="Search content or channel..." prefWidth="500.0"
+                   style="-fx-background-color: #1e1e1e; -fx-text-fill: #ffffff; -fx-prompt-text-fill: #aaaaaa; -fx-border-color: #333333;" />
 
         <!-- Search Button -->
-        <Button fx:id="searchBtn" layoutX="570.0" layoutY="280.0" text="Search" onAction="#searchClicked"/>
+        <Button fx:id="searchBtn" layoutX="570.0" layoutY="280.0" text="Search" onAction="#searchClicked"
+                style="-fx-background-color: #333333; -fx-text-fill: #ffffff;" />
 
         <!-- Search Results Label -->
-        <Label layoutX="50.0" layoutY="330.0" text="Search Results:" style="-fx-font-size: 20px;" />
+        <Label layoutX="50.0" layoutY="330.0" text="Search Results:"
+               style="-fx-font-size: 20px; -fx-text-fill: #ffffff;" />
 
         <!-- ScrollPane برای Search Results -->
-        <ScrollPane layoutX="50.0" layoutY="360.0" prefWidth="700.0" prefHeight="200.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
+        <ScrollPane layoutX="50.0" layoutY="360.0" prefWidth="700.0" prefHeight="200.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: #121212; -fx-border-color: transparent;">
             <content>
-                <FlowPane fx:id="searchResultsFlowPane" prefWidth="680.0" prefHeight="180.0" hgap="10" vgap="10" />
+                <FlowPane fx:id="searchResultsFlowPane" prefWidth="680.0" prefHeight="180.0" hgap="10" vgap="10"
+                          style="-fx-background-color: #1e1e1e;" />
             </content>
         </ScrollPane>
 
