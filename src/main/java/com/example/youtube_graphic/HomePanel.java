@@ -172,11 +172,9 @@ public class HomePanel implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ContentPlayer.fxml"));
             Parent root = loader.load();
 
-            // 2. گرفتن کنترلر و مقداردهی content
             ContentPlayerPanel controller = loader.getController();
             controller.setContent(content);
 
-            // 3. نمایش صحنه
             Stage stage = HelloApplication.primaryStage;
             stage.setScene(new Scene(root));
             stage.show();
