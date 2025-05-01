@@ -13,8 +13,10 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import Controller.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,21 +40,162 @@ public class SignUpOrLoginPanel implements Initializable {
     @FXML
     private Label loginMassage;
 
+//    @FXML
+//    void loginClicked(MouseEvent event) throws IOException {
+//        String username = enterUsername.getText();
+//        String password = enterPassword.getText();
+//        String result = userController.login(username, password);
+//        if (username.isEmpty() || password.isEmpty()) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Warning");
+//            alert.setContentText("Fields cannot be empty");
+//            alert.showAndWait();
+//        }
+//        else if (!(result.contains("Logged in successfully"))){
+//            loginMassage.setText(result);
+//        }else {
+//            this.stage = HelloApplication.primaryStage;
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
+//            Parent root = fxmlLoader.load();
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//        }
+//    }
+//    @FXML
+//    void loginClicked(MouseEvent event) throws IOException {
+//        String username = enterUsername.getText();
+//        String password = enterPassword.getText();
+//
+//        if (username.isEmpty() || password.isEmpty()) {
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Warning");
+//            alert.setContentText("Fields cannot be empty");
+//            alert.showAndWait();
+//            return;
+//        }
+//
+//        AdminController adminController = AdminController.getInstance();
+//        String adminResult = adminController.login(username, password);
+//
+//        if (adminResult.equals("Admin logged in.")) {
+//            // اگر ادمین بود ➔ برو پنل ادمین
+//            this.stage = HelloApplication.primaryStage;
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+//            Parent root = loader.load();
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//            return;
+//        }
+//
+//        // اگر ادمین نبود ➔ تلاش کن به عنوان یوزر معمولی لاگین کنی
+//        String result = userController.login(username, password);
+//        if (!(result.contains("Logged in successfully"))) {
+//            loginMassage.setText(result);
+//        } else {
+//            this.stage = HelloApplication.primaryStage;
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
+//            Parent root = loader.load();
+//            HelloApplication.basePageController = loader.getController();
+//            Scene scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//        }
+//    }
+//@FXML
+//void loginClicked(MouseEvent event) throws IOException {
+//    String username = enterUsername.getText();
+//    String password = enterPassword.getText();
+//
+//    if (username.isEmpty() || password.isEmpty()) {
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setTitle("Warning");
+//        alert.setContentText("Fields cannot be empty");
+//        alert.showAndWait();
+//        return;
+//    }
+//
+//    AdminController adminController = AdminController.getInstance();
+//    String adminResult = adminController.login(username, password);
+//
+//    if (adminResult.equals("Admin logged in.")) {
+//        this.stage = HelloApplication.primaryStage;
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//        return;
+//    }
+//
+//    String result = userController.login(username, password);
+//    if (!(result.contains("Logged in successfully"))) {
+//        loginMassage.setText(result);
+//    } else {
+//        this.stage = HelloApplication.primaryStage;
+//
+//        // 🔧 ترتیب درست
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
+//        Parent root = loader.load(); // اول load
+//        HelloApplication.basePageController = loader.getController(); // بعد getController
+//
+//        // لود یه صفحه داخلی داخل BasePage (مثلاً Home)
+//        FXMLLoader innerLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
+//        Parent innerRoot = innerLoader.load();
+//        HelloApplication.basePageController.setMainContent(innerRoot);
+//
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//}
+
     @FXML
     void loginClicked(MouseEvent event) throws IOException {
         String username = enterUsername.getText();
         String password = enterPassword.getText();
-        String result = userController.login(username, password);
+
         if (username.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setContentText("Fields cannot be empty");
             alert.showAndWait();
+            return;
         }
-        else if (!(result.contains("Logged in successfully"))){
-            loginMassage.setText(result);
-        }else {
 
+        AdminController adminController = AdminController.getInstance();
+        String adminResult = adminController.login(username, password);
+
+        if (adminResult.equals("Admin logged in.")) {
+            this.stage = HelloApplication.primaryStage;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            return;
+        }
+
+        String result = userController.login(username, password);
+        if (!(result.contains("Logged in successfully"))) {
+            loginMassage.setText(result);
+        } else {
+            // Load BasePage.fxml
+            FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
+            Parent baseRoot = baseLoader.load();
+            HelloApplication.basePageController = baseLoader.getController();
+
+            // Load Home.fxml into mainContent
+            FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent homeRoot = homeLoader.load();
+            HelloApplication.basePageController.setMainContent(homeRoot);
+
+            // Set scene with BasePage
+            this.stage = HelloApplication.primaryStage;
+            Scene scene = new Scene(baseRoot);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
@@ -125,6 +268,20 @@ public class SignUpOrLoginPanel implements Initializable {
     private TextField enterUsername2;
 
     @FXML
+    private void chooseProfileCover() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Profile Cover");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(HelloApplication.primaryStage);
+        if (selectedFile != null) {
+            enterProfileCover.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+    @FXML
     void cancelClicked(MouseEvent event) throws IOException {
         this.stage = HelloApplication.primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUpOrLogin.fxml"));
@@ -141,6 +298,7 @@ public class SignUpOrLoginPanel implements Initializable {
             SignupMassage.setText(result);
         }
         else {
+            userController.login(enterUsername2.getText(), enterPassword2.getText());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Signup");
             alert.setContentText("Account created successfully");
