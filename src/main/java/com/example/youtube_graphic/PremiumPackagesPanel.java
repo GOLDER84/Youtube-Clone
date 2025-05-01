@@ -88,7 +88,7 @@ public class PremiumPackagesPanel {
 
                 if (alert.getResult() == ButtonType.OK){
                     this.stage = HelloApplication.primaryStage;
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Library.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
