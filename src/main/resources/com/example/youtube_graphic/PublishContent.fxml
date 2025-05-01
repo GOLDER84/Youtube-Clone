@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600" prefWidth="800" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.PublishContentPanel">
+
+    <Label layoutX="30" layoutY="30" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Publish New Content" />
+
+    <!-- انتخاب نوع محتوا -->
+    <Label layoutX="30" layoutY="90" text="Content Type:" />
+    <ComboBox fx:id="contentTypeComboBox" layoutX="150" layoutY="90" onAction="#updateVisibleFields" prefWidth="300" />
+
+    <!-- عنوان -->
+    <Label layoutX="30" layoutY="140" text="Title:" />
+    <TextField fx:id="titleField" layoutX="150" layoutY="140" prefWidth="300" />
+
+    <!-- توضیحات -->
+    <Label layoutX="30" layoutY="190" text="Description:" />
+    <TextArea fx:id="descriptionField" layoutX="150" layoutY="190" prefHeight="60" prefWidth="300" />
+
+    <!-- مدت زمان -->
+    <Label layoutX="30" layoutY="270" text="Duration (hh:mm:ss):" />
+    <TextField fx:id="durationField" layoutX="150" layoutY="270" prefWidth="300" />
+
+    <!-- لینک فایل محتوا -->
+    <Label layoutX="30" layoutY="320" text="File Link:" />
+    <TextField fx:id="fileLinkField" layoutX="150" layoutY="320" prefWidth="250" />
+    <Button layoutX="410" layoutY="320" onAction="#chooseFile" text="Choose" />
+
+    <!-- لینک کاور محتوا -->
+    <Label layoutX="30" layoutY="370" text="Cover Link:" />
+    <TextField fx:id="coverLinkField" layoutX="150" layoutY="370" prefWidth="250" />
+    <Button layoutX="410" layoutY="370" onAction="#chooseCover" text="Choose" />
+
+    <!-- دسته بندی -->
+    <Label layoutX="30" layoutY="420" text="Category:" />
+    <ComboBox fx:id="categoryComboBox" layoutX="150" layoutY="420" prefWidth="300" />
+
+    <!-- تیک ویژه بودن -->
+    <Label layoutX="30" layoutY="470" text="Is Exclusive?" />
+    <CheckBox fx:id="isExclusiveCheckBox" layoutX="150" layoutY="470" />
+
+    <!-- فیلدهای اضافه برای محتواهای خاص -->
+    <Label layoutX="500" layoutY="90" text="Subtitles:" />
+    <TextField fx:id="subtitlesField" layoutX="600" layoutY="90" prefWidth="150" />
+
+    <Label layoutX="500" layoutY="140" text="Reference Music:" />
+    <TextField fx:id="referenceMusicField" layoutX="600" layoutY="140" prefWidth="150" />
+
+    <Label layoutX="500" layoutY="190" text="Scheduled Time:" />
+    <TextField fx:id="scheduledTimeField" layoutX="600.0" layoutY="190" prefWidth="150.0" />
+
+    <Label layoutX="500" layoutY="240" text="Quality:" />
+    <ComboBox fx:id="qualityComboBox" layoutX="600" layoutY="240" prefWidth="150" />
+
+    <Label layoutX="500" layoutY="290" text="Format:" />
+    <ComboBox fx:id="formatComboBox" layoutX="600" layoutY="290" prefWidth="150" />
+
+    <!-- دکمه‌های انتشار و بازگشت -->
+    <Button layoutX="600" layoutY="400" onAction="#onPublishContent" text="Publish Content" />
+    <Button layoutX="600" layoutY="450" onAction="#onBack" text="Back" />
+   <Label layoutX="500.0" layoutY="207.0" text="(YYYY-MM-DD)" />
+
+</AnchorPane>
