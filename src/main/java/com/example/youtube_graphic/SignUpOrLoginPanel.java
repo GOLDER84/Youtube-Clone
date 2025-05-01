@@ -79,7 +79,6 @@ public class SignUpOrLoginPanel implements Initializable {
 //        String adminResult = adminController.login(username, password);
 //
 //        if (adminResult.equals("Admin logged in.")) {
-//            // اگر ادمین بود ➔ برو پنل ادمین
 //            this.stage = HelloApplication.primaryStage;
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
 //            Parent root = loader.load();
@@ -88,8 +87,6 @@ public class SignUpOrLoginPanel implements Initializable {
 //            stage.show();
 //            return;
 //        }
-//
-//        // اگر ادمین نبود ➔ تلاش کن به عنوان یوزر معمولی لاگین کنی
 //        String result = userController.login(username, password);
 //        if (!(result.contains("Logged in successfully"))) {
 //            loginMassage.setText(result);
@@ -135,12 +132,10 @@ public class SignUpOrLoginPanel implements Initializable {
 //    } else {
 //        this.stage = HelloApplication.primaryStage;
 //
-//        // 🔧 ترتیب درست
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
 //        Parent root = loader.load(); // اول load
 //        HelloApplication.basePageController = loader.getController(); // بعد getController
 //
-//        // لود یه صفحه داخلی داخل BasePage (مثلاً Home)
 //        FXMLLoader innerLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
 //        Parent innerRoot = innerLoader.load();
 //        HelloApplication.basePageController.setMainContent(innerRoot);
@@ -181,17 +176,14 @@ public class SignUpOrLoginPanel implements Initializable {
         if (!(result.contains("Logged in successfully"))) {
             loginMassage.setText(result);
         } else {
-            // Load BasePage.fxml
             FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("BasePage.fxml"));
             Parent baseRoot = baseLoader.load();
             HelloApplication.basePageController = baseLoader.getController();
 
-            // Load Home.fxml into mainContent
             FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
             Parent homeRoot = homeLoader.load();
             HelloApplication.basePageController.setMainContent(homeRoot);
 
-            // Set scene with BasePage
             this.stage = HelloApplication.primaryStage;
             Scene scene = new Scene(baseRoot);
             stage.setScene(scene);
