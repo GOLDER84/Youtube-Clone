@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="596.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.SignUpOrLoginPanel">
    <children>
       <Label alignment="CENTER" layoutX="188.0" layoutY="14.0" prefHeight="62.0" prefWidth="126.0" text="Sign Up" textFill="#39b535">
@@ -19,7 +18,9 @@
       <TextField fx:id="enterFullname" layoutX="177.0" layoutY="235.0" />
       <TextField fx:id="enterEmail" layoutX="119.0" layoutY="298.0" prefHeight="26.0" prefWidth="266.0" />
       <TextField fx:id="enterPhonenumber" layoutX="176.0" layoutY="361.0" />
-      <TextField fx:id="enterProfileCover" layoutX="34.0" layoutY="428.0" prefHeight="26.0" prefWidth="437.0" />
+      <TextField fx:id="enterProfileCover" layoutX="117.0" layoutY="427.0" prefHeight="26.0" prefWidth="266.0" />
+      <Button layoutX="397.0" layoutY="428.0" onAction="#chooseProfileCover" text="Browse..." />
+
       <Label alignment="CENTER" layoutX="207.0" layoutY="102.0" prefHeight="18.0" prefWidth="90.0" text="Username" textFill="#3f47d9" />
       <Label layoutX="225.0" layoutY="160.0" text="Password" textFill="#3f47d9" />
       <Label layoutX="229.0" layoutY="217.0" text="Fullname" textFill="#3f47d9" />
