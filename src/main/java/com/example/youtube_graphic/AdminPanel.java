@@ -137,8 +137,6 @@ public class AdminPanel implements Initializable {
         stage.show();
     }
 
-    // ========== لیست‌های کلیک‌شونده ==========
-
     @FXML
     void userSelected(MouseEvent e) {
         String username = userListView.getSelectionModel().getSelectedItem();
@@ -176,8 +174,6 @@ public class AdminPanel implements Initializable {
             }
         }
     }
-
-    // ========== کمکی‌ها ==========
 
     private void refreshUserList() {
         ObservableList<String> names = FXCollections.observableArrayList();
