@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.youtube_graphic.UserChannelPanel"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.youtube_graphic.UserChannelPanel">
+
+    <!-- Header -->
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="My Channel" />
+
+    <!-- Channel Cover -->
+    <ImageView fx:id="channelCover" fitHeight="100.0" fitWidth="150.0" layoutX="20.0" layoutY="60.0" preserveRatio="true" />
+
+    <!-- Channel Name -->
+    <Label layoutX="200.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Name:" />
+    <Label fx:id="channelName" layoutX="260.0" layoutY="70.0" style="-fx-font-size: 16px;" />
+
+    <!-- Channel Description -->
+    <Label layoutX="200.0" layoutY="100.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Description:" />
+    <Label fx:id="channelDescription" layoutX="200.0" layoutY="120.0" prefHeight="60.0" prefWidth="400.0" style="-fx-font-size: 13px;" wrapText="true" />
+
+    <!-- Subscriber Count -->
+    <Label layoutX="200.0" layoutY="190.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Subscribers:" />
+    <Label fx:id="subscriberCount" layoutX="310.0" layoutY="190.0" style="-fx-font-size: 14px;" />
+
+    <!-- New Playlist Button -->
+    <Button fx:id="createChannelPlaylistBtn" layoutX="600.0" layoutY="60.0" onMouseClicked="#onCreateChannelPlaylist" text="New Playlist" />
+    <!-- دکمه انتشار محتوا -->
+    <Button fx:id="publishContentBtn" layoutX="600.0" layoutY="130.0" text="Publish Content" onAction="#onPublishContent" />
+
+    <!-- Playlists List -->
+    <Label layoutX="20.0" layoutY="190.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Playlists:" />
+    <ListView fx:id="playlistListView" layoutX="20.0" layoutY="215.0" onMouseClicked="#onPlaylistSelected" prefHeight="345.0" prefWidth="300.0" />
 
 </AnchorPane>
